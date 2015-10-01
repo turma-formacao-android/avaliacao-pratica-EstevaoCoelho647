@@ -3,19 +3,25 @@
     package="br.com.cast.turmaformacao.agenda" >
 
     <application
+        android:name=".AgendaManagerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".agendaListaActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:name=".controllers.activities.ContactListActivity"
+        android:label="@string/app_name" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+        <activity
+            android:name=".controllers.activities.ContactFormActivity"
+            android:label="@string/lbl_newContact" >
+            </activity>
+
     </application>
 
 </manifest>

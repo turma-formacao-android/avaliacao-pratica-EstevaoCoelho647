@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".controllers.activities.ContactListActivity">
+    <item
+        android:id="@+id/menu_add_contact"
+        android:icon="@mipmap/ic_add"
+        android:title="@string/lbl_add_contact"
+        app:showAsAction="always" />
+</menu>

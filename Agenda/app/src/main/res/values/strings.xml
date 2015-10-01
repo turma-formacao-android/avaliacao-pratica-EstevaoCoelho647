@@ -3,4 +3,27 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="lbl_add_contact">New Contact</string>
+    <string name="lbl_edit">Edit</string>
+    <string name="lbl_delete">Delete</string>
+    <string name="lbl_confirm">Confirm</string>
+    <string name="msg_confirm_delete">You are sure want delete this contact ?</string>
+    <string name="lbl_yes">Yes</string>
+    <string name="mgs_sucess_delete">Contact deleted</string>
+    <string name="lbl_no">Not</string>
+    <string name="lbl_name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="txt_add_contac">Add</string>
+    <string name="msg_required">Required Strings</string>
+    <string name="msg_success_save">Save whit Success</string>
+    <string name="lbl_newContact">New Contact</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_redesocial">Social Contact</string>
+    <string name="lbl_endereco">Address</string>
+    <string name="lbl_address">Endereço</string>
+    <string name="lbl_cep">Cep</string>
+    <string name="lbl_bairro">Bairro</string>
+    <string name="lbl_UF">UF</string>
+    <string name="lbl_cidade">City</string>
+    <string name="lbl_Logradouro">Logradouro</string>
 </resources>

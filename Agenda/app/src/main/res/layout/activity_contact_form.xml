@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="80dp"
+            android:layout_height="82dp" />
+
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="299dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editTextName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/editTextName"
+            android:layout_below="@+id/editTextName"
+            android:hint="@string/phone" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:hint="@string/lbl_name" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextPhone"
+            android:hint="@string/lbl_email" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:background="#ff797979"
+            android:autoText="true"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView2">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/editTextRedeSocial"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextEmail"
+            android:hint="@string/lbl_redesocial" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_address"
+            android:textSize="10pt"
+            android:textColor="#d0000000"
+            android:id="@+id/textView"
+            android:layout_below="@+id/editTextRedeSocial"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/editTextCep"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_cep"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/textView"
+            android:layout_toLeftOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/editTextbairro"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_bairro"
+            android:layout_below="@+id/editTextLogradouro"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/editTextUF"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_UF"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_alignBottom="@+id/editTextCidade" />
+
+        <EditText
+            android:id="@+id/editTextCidade"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_cidade"
+            android:layout_alignTop="@+id/editTextCep"
+            android:layout_toRightOf="@+id/editTextCep"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/editTextLogradouro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_Logradouro"
+            android:layout_weight="0.61"
+            android:layout_below="@+id/editTextCep"
+            android:layout_alignRight="@+id/editTextbairro"
+            android:layout_alignEnd="@+id/editTextbairro" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
