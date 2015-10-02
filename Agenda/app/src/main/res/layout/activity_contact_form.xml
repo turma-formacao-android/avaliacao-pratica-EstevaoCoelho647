@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="683dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="80dp"
-            android:layout_height="82dp" />
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/editTextTelefone" />
 
 
-        <EditText
-            android:id="@+id/editTextPhone"
+        <ListView
+            android:id="@+id/listViewTelefones"
             android:layout_width="299dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editTextName"
-            android:layout_alignParentEnd="true"
+            android:layout_height="70dp"
+            android:hint="@string/phone"
+            android:layout_below="@+id/editTextTelefone"
             android:layout_alignParentRight="true"
-            android:layout_alignStart="@+id/editTextName"
-            android:layout_below="@+id/editTextName"
-            android:hint="@string/phone" />
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/editTextName"
@@ -35,103 +44,179 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
             android:hint="@string/lbl_name" />
 
-        <EditText
-            android:id="@+id/editTextEmail"
+        <ListView
+            android:id="@+id/listViewEmails"
             android:layout_width="307dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/editTextPhone"
-            android:hint="@string/lbl_email" />
-
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="1dp"
-            android:background="#ff797979"
-            android:autoText="true"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/textView2">
-
-        </TextView>
-
-        <EditText
-            android:id="@+id/editTextRedeSocial"
-            android:layout_width="307dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_height="70dp"
             android:layout_below="@+id/editTextEmail"
-            android:hint="@string/lbl_redesocial" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ListView
+            android:id="@+id/listViewRedeSociais"
+            android:layout_width="307dp"
+            android:layout_height="70dp"
+            android:hint="@string/lbl_redesocial"
+            android:layout_alignRight="@+id/buttonMoreRedeSocial"
+            android:layout_alignEnd="@+id/buttonMoreRedeSocial"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextRedeSocial" />
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/lbl_address"
-            android:textSize="10pt"
             android:textColor="#d0000000"
-            android:id="@+id/textView"
-            android:layout_below="@+id/editTextRedeSocial"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="22dp">
-        </TextView>
+            android:textSize="10pt"
+            android:layout_below="@+id/listViewRedeSociais"
+            android:layout_centerHorizontal="true"></TextView>
 
         <EditText
             android:id="@+id/editTextCep"
-            android:layout_width="307dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:hint="@string/lbl_cep"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/textView"
-            android:layout_toLeftOf="@+id/textView" />
 
-        <EditText
-            android:id="@+id/editTextbairro"
-            android:layout_width="307dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/lbl_bairro"
-            android:layout_below="@+id/editTextLogradouro"
+            android:hint="@string/lbl_cep"
+            android:layout_below="@+id/textView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <EditText
-            android:id="@+id/editTextUF"
+            android:id="@+id/editTextBairro"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_bairro"
+            android:layout_below="@+id/editTextEstado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editTextEstado"
+            android:layout_alignEnd="@+id/editTextEstado" />
+
+        <EditText
+            android:id="@+id/editTextEstado"
             android:layout_width="307dp"
             android:layout_height="wrap_content"
             android:hint="@string/lbl_UF"
-            android:layout_below="@+id/textView"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textView2"
-            android:layout_toRightOf="@+id/textView2"
-            android:layout_alignBottom="@+id/editTextCidade" />
+            android:layout_alignTop="@+id/editTextCidade"
+            android:layout_toEndOf="@+id/editTextCidade"
+            android:layout_toRightOf="@+id/editTextCidade" />
 
         <EditText
             android:id="@+id/editTextCidade"
             android:layout_width="307dp"
             android:layout_height="wrap_content"
             android:hint="@string/lbl_cidade"
-            android:layout_alignTop="@+id/editTextCep"
-            android:layout_toRightOf="@+id/editTextCep"
-            android:layout_alignRight="@+id/textView2"
-            android:layout_alignEnd="@+id/textView2" />
+            android:layout_below="@+id/editTextCep"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/editTextLogradouro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/lbl_Logradouro"
             android:layout_weight="0.61"
-            android:layout_below="@+id/editTextCep"
-            android:layout_alignRight="@+id/editTextbairro"
-            android:layout_alignEnd="@+id/editTextbairro" />
+            android:hint="@string/lbl_Logradouro"
+            android:layout_below="@+id/editTextBairro"
+            android:layout_alignRight="@+id/editTextEstado"
+            android:layout_alignEnd="@+id/editTextEstado"
+            android:layout_toRightOf="@+id/editTextTipoDeLogradouro"
+            android:layout_toEndOf="@+id/editTextTipoDeLogradouro" />
+
+        <EditText
+            android:id="@+id/editTextTipoDeLogradouro"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_tipo"
+            android:layout_below="@+id/editTextBairro"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/buttonBusca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textSize="6pt"
+            android:layout_alignBottom="@+id/editTextCep"
+            android:layout_toRightOf="@+id/editTextCep"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:id="@+id/editTextTelefone"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextName"
+            android:layout_toRightOf="@+id/imageView"
+            android:hint="@string/phone"
+            android:layout_toLeftOf="@+id/buttonMorePhone"
+            android:layout_toStartOf="@+id/buttonMorePhone" />
+
+        <Button
+            android:id="@+id/buttonMorePhone"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:text="+"
+            android:textSize="6pt"
+            android:layout_above="@+id/listViewTelefones"
+            android:layout_alignRight="@+id/listViewTelefones"
+            android:layout_alignEnd="@+id/listViewTelefones" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_email"
+            android:layout_below="@+id/listViewTelefones"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/buttonMoreEmail"
+            android:layout_toStartOf="@+id/buttonMoreEmail" />
+
+        <Button
+            android:id="@+id/buttonMoreEmail"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:text="+"
+            android:textSize="6pt"
+            android:layout_alignBottom="@+id/editTextEmail"
+            android:layout_alignRight="@+id/listViewTelefones"
+            android:layout_alignEnd="@+id/listViewTelefones" />
+        <EditText
+            android:id="@+id/editTextRedeSocial"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_redesocial"
+            android:layout_below="@+id/listViewEmails"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/buttonMoreRedeSocial"
+            android:layout_toStartOf="@+id/buttonMoreRedeSocial" />
+
+        <Button
+            android:id="@+id/buttonMoreRedeSocial"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:text="+"
+            android:textSize="6pt"
+            android:layout_alignBottom="@+id/editTextRedeSocial"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
 
     </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
 
 
-</LinearLayout>
+
 

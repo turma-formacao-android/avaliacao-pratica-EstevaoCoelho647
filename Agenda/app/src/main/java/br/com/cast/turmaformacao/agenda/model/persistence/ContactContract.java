@@ -19,8 +19,15 @@ public class ContactContract {
     public static String TELEFONE = "telefone";
     public static String EMAIL = "email";
     public static String REDESOCIAL = "redesocial";
+    public static String CEP = "cep";
+    public static String TIPOLOGRADOURO = "tipoDeLogradouro";
+    public static String BAIRRO = "bairro";
+    public static String LOGRADOURO = "logradouro";
+    public static String CIDADE = "cidade";
+    public static String ESTADO = "estado";
 
-    public static final String[] COLUNS = {ID, NAME, TELEFONE, EMAIL, REDESOCIAL};
+
+    public static final String[] COLUNS = {ID, NAME, TELEFONE, EMAIL, REDESOCIAL, CEP, TIPOLOGRADOURO, BAIRRO, LOGRADOURO, CIDADE, ESTADO};
 
     private ContactContract() {
     }
@@ -36,7 +43,13 @@ public class ContactContract {
         create.append(NAME + " TEXT NOT NULL,");
         create.append(TELEFONE + " TEXT,");
         create.append(EMAIL + " TEXT,");
-        create.append(REDESOCIAL + " TEXT ");
+        create.append(REDESOCIAL + " TEXT, ");
+        create.append(CEP + " TEXT, ");
+        create.append(TIPOLOGRADOURO + " TEXT, ");
+        create.append(BAIRRO + " TEXT, ");
+        create.append(LOGRADOURO + " TEXT, ");
+        create.append(CIDADE + " TEXT, ");
+        create.append(ESTADO + " TEXT ");
         create.append(" ); ");
 
         return create.toString();
@@ -46,9 +59,12 @@ public class ContactContract {
         ContentValues values = new ContentValues();
         values.put(ContactContract.ID, contact.getId());
         values.put(ContactContract.NAME, contact.getNome());
-        values.put(ContactContract.TELEFONE, contact.getTelefone());
-        values.put(ContactContract.EMAIL, contact.getTelefone());
-        values.put(ContactContract.REDESOCIAL, contact.getTelefone());
+        values.put(ContactContract.CEP, contact.getAddress().getZipCode());
+        values.put(ContactContract.TIPOLOGRADOURO, contact.getAddress().getType());
+        values.put(ContactContract.BAIRRO, contact.getAddress().getNeighborhood());
+        values.put(ContactContract.LOGRADOURO, contact.getAddress().getStreet());
+        values.put(ContactContract.CIDADE, contact.getAddress().getCity());
+        values.put(ContactContract.ESTADO, contact.getAddress().getState());
 
         return values;
     }
@@ -58,10 +74,12 @@ public class ContactContract {
         if (!cursor.isBeforeFirst() || cursor.moveToNext()) {
             contact.setId(cursor.getLong(cursor.getColumnIndex(ContactContract.ID)));
             contact.setNome(cursor.getString(cursor.getColumnIndex(ContactContract.NAME)));
-            contact.setTelefone(cursor.getString(cursor.getColumnIndex(ContactContract.TELEFONE)));
-            contact.setEmail(cursor.getString(cursor.getColumnIndex(ContactContract.EMAIL)));
-            contact.setRedeSocial(cursor.getString(cursor.getColumnIndex(ContactContract.REDESOCIAL)));
-
+            contact.getAddress().setZipCode(cursor.getString(cursor.getColumnIndex(ContactContract.CEP)));
+            contact.getAddress().setType(cursor.getString(cursor.getColumnIndex(ContactContract.TIPOLOGRADOURO)));
+            contact.getAddress().setNeighborhood(cursor.getString(cursor.getColumnIndex(ContactContract.BAIRRO)));
+            contact.getAddress().setStreet(cursor.getString(cursor.getColumnIndex(ContactContract.LOGRADOURO)));
+            contact.getAddress().setCity(cursor.getString(cursor.getColumnIndex(ContactContract.CIDADE)));
+            contact.getAddress().setState(cursor.getString(cursor.getColumnIndex(ContactContract.ESTADO)));
             return contact;
         }
         return null;

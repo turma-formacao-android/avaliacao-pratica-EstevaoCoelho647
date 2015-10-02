@@ -5,12 +5,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -18,12 +21,20 @@ import java.util.List;
 import br.com.cast.turmaformacao.agenda.R;
 import br.com.cast.turmaformacao.agenda.controllers.adapters.ContactListAdapter;
 import br.com.cast.turmaformacao.agenda.model.entities.Contact;
+import br.com.cast.turmaformacao.agenda.model.entities.RedeSocial;
+import br.com.cast.turmaformacao.agenda.model.entities.Telefone;
+import br.com.cast.turmaformacao.agenda.model.persistence.ContactBusinessService;
+import br.com.cast.turmaformacao.agenda.model.persistence.EmailBusinessService;
+import br.com.cast.turmaformacao.agenda.model.persistence.RedeSocialBusinessService;
+import br.com.cast.turmaformacao.agenda.model.persistence.TelefoneBusinessService;
 
 
 public class ContactListActivity extends AppCompatActivity {
 
     private ListView listViewContactList;
     private Contact selectedContact;
+    ContactListAdapter adapter;
+    private TextView filterEditText;
 
 
     @Override
@@ -32,6 +43,28 @@ public class ContactListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contacts_list);
 
         bindContactList();
+
+        bindEditTextFilter();
+
+    }
+
+    private void bindEditTextFilter() {
+        filterEditText = (TextView) findViewById(R.id.editTextFilter);
+        filterEditText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
     protected void onResume() {
@@ -49,7 +82,7 @@ public class ContactListActivity extends AppCompatActivity {
         listViewContactList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                ContactListAdapter adapter = (ContactListAdapter) listViewContactList.getAdapter();
+                adapter = (ContactListAdapter) listViewContactList.getAdapter();
                 selectedContact = (Contact) adapter.getItem(position);
                 return false;
             }
@@ -114,6 +147,9 @@ public class ContactListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ContactBusinessService.delete(selectedContact);
+                        TelefoneBusinessService.delete(selectedContact);
+                        EmailBusinessService.delete(selectedContact);
+                        RedeSocialBusinessService.delete(selectedContact);
                         selectedContact = null;
                         String message = getString(R.string.mgs_sucess_delete);
                         updateTaskList();
@@ -131,8 +167,6 @@ public class ContactListActivity extends AppCompatActivity {
         ContactListAdapter adapter = (ContactListAdapter) listViewContactList.getAdapter();
         adapter.notifyDataSetChanged();
     }
-
-
 }
 
 

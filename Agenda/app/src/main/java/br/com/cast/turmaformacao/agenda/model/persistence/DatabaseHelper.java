@@ -3,6 +3,10 @@ package br.com.cast.turmaformacao.agenda.model.persistence;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import br.com.cast.turmaformacao.agenda.model.entities.Email;
+import br.com.cast.turmaformacao.agenda.model.entities.RedeSocial;
+import br.com.cast.turmaformacao.agenda.model.entities.Telefone;
 import br.com.cast.turmaformacao.agenda.util.ApplicationUtil;
 
 /**
@@ -24,6 +28,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(ContactContract.getCreateTableScript());
+        db.execSQL(RedeSocialContract.getCreateTableScript());
+        db.execSQL(TelefoneContract.getCreateTableScript());
+        db.execSQL(EmailContract.getCreateTableScript());
+
     }
 
     @Override

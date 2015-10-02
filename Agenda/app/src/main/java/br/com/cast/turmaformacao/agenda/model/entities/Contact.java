@@ -4,30 +4,25 @@ package br.com.cast.turmaformacao.agenda.model.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrador on 01/10/2015.
  */
 public class Contact implements Parcelable {
     private Long id;
     private String nome;
-    private String telefone;
-    private String email;
-    private String redeSocial;
-    private Adress adress;
+    private ArrayList<Telefone> telefone;
+    private ArrayList<Email> email;
+    private ArrayList<RedeSocial> redeSocial;
+    private Address address;
 
     public Contact() {
-    }
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", email='" + email + '\'' +
-                ", redeSocial='" + redeSocial + '\'' +
-                ", adress=" + adress +
-                '}';
+        this.address = new Address();
+        this.telefone = new ArrayList<>();
+        this.email = new ArrayList<>();
+        this.redeSocial = new ArrayList<>();
     }
 
     @Override
@@ -44,7 +39,7 @@ public class Contact implements Parcelable {
         if (email != null ? !email.equals(contact.email) : contact.email != null) return false;
         if (redeSocial != null ? !redeSocial.equals(contact.redeSocial) : contact.redeSocial != null)
             return false;
-        return !(adress != null ? !adress.equals(contact.adress) : contact.adress != null);
+        return !(address != null ? !address.equals(contact.address) : contact.address != null);
 
     }
 
@@ -55,7 +50,7 @@ public class Contact implements Parcelable {
         result = 31 * result + (telefone != null ? telefone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (redeSocial != null ? redeSocial.hashCode() : 0);
-        result = 31 * result + (adress != null ? adress.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
     }
 
@@ -76,36 +71,36 @@ public class Contact implements Parcelable {
         this.nome = nome;
     }
 
-    public String getTelefone() {
+    public ArrayList<Telefone> getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(ArrayList<Telefone> telefone) {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
+    public ArrayList<Email> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(ArrayList<Email> email) {
         this.email = email;
     }
 
-    public String getRedeSocial() {
+    public ArrayList<RedeSocial> getRedeSocial() {
         return redeSocial;
     }
 
-    public void setRedeSocial(String redeSocial) {
+    public void setRedeSocial(ArrayList<RedeSocial> redeSocial) {
         this.redeSocial = redeSocial;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
@@ -117,22 +112,22 @@ public class Contact implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.id == null ? -1 : this.id);
         dest.writeString(this.nome == null ? "" : this.nome);
-        dest.writeString(this.telefone== null ? "" : this.telefone);
-        dest.writeString(this.email== null ? "" : this.email);
-        dest.writeString(this.redeSocial== null ? "" : this.redeSocial);
-        dest.writeParcelable((Parcelable) this.adress, flags);
+        dest.writeTypedList(telefone);
+        dest.writeTypedList(email);
+        dest.writeTypedList(redeSocial);
+        dest.writeParcelable(this.address, 0);
     }
 
     protected Contact(Parcel in) {
         this.id = (Long) in.readValue(Long.class.getClassLoader());
         this.nome = in.readString();
-        this.telefone = in.readString();
-        this.email = in.readString();
-        this.redeSocial = in.readString();
-        this.adress = in.readParcelable(Adress.class.getClassLoader());
+        this.telefone = in.createTypedArrayList(Telefone.CREATOR);
+        this.email = in.createTypedArrayList(Email.CREATOR);
+        this.redeSocial = in.createTypedArrayList(RedeSocial.CREATOR);
+        this.address = in.readParcelable(Address.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Contact> CREATOR = new Parcelable.Creator<Contact>() {
+    public static final Creator<Contact> CREATOR = new Creator<Contact>() {
         public Contact createFromParcel(Parcel source) {
             return new Contact(source);
         }

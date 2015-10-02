@@ -26,4 +26,6 @@
     <string name="lbl_UF">UF</string>
     <string name="lbl_cidade">City</string>
     <string name="lbl_Logradouro">Logradouro</string>
+    <string name="lbl_tipo">Type</string>
+    <string name="txt_invalid_zip">Invalid Zip!</string>
 </resources>
